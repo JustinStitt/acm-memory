@@ -62,3 +62,19 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+#ai {
+	background-color: #21d19f;
+}
+
+#algo {
+	background-color: #9d35e7;
+}
+
+#dev {
+	background-color: #1e6cff;
+}
+
+#design {
+	background-color: #ff4365;
+}
