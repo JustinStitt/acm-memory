@@ -4,7 +4,7 @@
 
 A memory game with the acm team logos!
 
-![](./app/public/show1.gif)
+![](./app/public/show.gif)
 
 -- might ship to acmcsuf.com, idk
 
