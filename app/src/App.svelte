@@ -2,12 +2,17 @@
   import Memory from "./Memory.svelte";
 </script>
 
-<div class="main">
-  <h1>ACM Memory</h1>
+<div class="main gradient-rect">
+  <h1 class="ominous-hover">ACM Memory</h1>
   <Memory />
 </div>
 
 <style>
+  h1 {
+    font-weight: 800;
+    font-size: 4vw;
+    margin-top: 1px;
+  }
   .main {
     display: flex;
     flex-direction: column;
