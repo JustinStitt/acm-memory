@@ -5,3 +5,7 @@ export function generateLevel(depth) {
     }
     return level;
 }
+
+export function hint(tile) {
+    tile.style.filter = "drop-shadow(1px 0px 30px #a69e46)";
+}
