@@ -1,4 +1,4 @@
-import { score, hiscore } from './stores.js'
+import { score, hiscore } from "./stores.js";
 
 function generateLevel(depth) {
   let level = [];
@@ -35,8 +35,8 @@ function idxToTeam(idx) {
 
 export function startLevel(depth, delay = 875) {
   state.move_list = generateLevel(depth);
-  state.incoming = []
-  state.cdepth = depth
+  state.incoming = [];
+  state.cdepth = depth;
   let cnt = 0;
   setClickable(false);
   /* TODO(justinstitt): give rhyme and reason to these magic numbers */
@@ -47,23 +47,23 @@ export function startLevel(depth, delay = 875) {
     ++cnt;
   }
   setTimeout(() => {
-    setClickable(true)
-  }, delay * cnt)
+    setClickable(true);
+  }, delay * (cnt - 1) * 1.3 + 75);
 }
 
 export function lose() {
-  updateHighscore()
-  state.score = 0
-  state.incoming = []
+  updateHighscore();
+  state.score = 0;
+  state.incoming = [];
   state.clickable = false;
   alert("You Lose!");
-  window.location.reload()
+  window.location.reload();
 }
 
 export function setClickable(is_clickable) {
   state.clickable = is_clickable;
   for (let i = 0; i < 4; ++i) {
-    let tile = idxToTeam(i)
+    let tile = idxToTeam(i);
     if (state.clickable === false) {
       tile.classList.add("no-click");
       continue;
@@ -74,33 +74,34 @@ export function setClickable(is_clickable) {
 
 export function sendMove(tile) {
   /* add to incoming */
-  state.incoming.push(tile)
-  let n = state.incoming.length
-  if(state.incoming[n-1] != state.move_list[n-1]) {
+  state.incoming.push(tile);
+  let n = state.incoming.length;
+  if (state.incoming[n - 1] != state.move_list[n - 1]) {
     lose();
-    return {result: "lose"}
+    return { result: "lose" };
   }
   /* TODO(justinstitt): add dynamic score incrementation (difficulty-based) */
-  state.score += 1253 * ( 1 + state.cdepth / 6)
-  score.update(s => s = state.score)
-  updateHighscore()
-  if(n >= state.move_list.length) {
-    win()
-    return {result: 'win'}
+  state.score += 1253 * (1 + state.cdepth / 6);
+  score.update((s) => (s = state.score));
+  updateHighscore();
+  if (n >= state.move_list.length) {
+    win();
+    return { result: "win" };
   }
-  return {result: 'tbd'}
+  return { result: "tbd" };
 }
 
 function updateHighscore() {
   if (state.score > state.hiscore) {
     localStorage.setItem("hiscore", state.score);
     state.hiscore = state.score;
-    hiscore.update(h => h = state.hiscore)
+    hiscore.update((h) => (h = state.hiscore));
   }
 }
 
 function win() {
-  console.log("passed level")
+  setClickable(false);
+  console.log("passed level");
 }
 
 export let state = {
