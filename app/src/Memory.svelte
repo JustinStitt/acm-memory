@@ -106,7 +106,7 @@
         sendTile(tiles.algo);
       }}
     >
-      <img src="algo.svg" />
+      <img src="algo.svg" alt="ACM Algo Team Logo" />
     </div>
     <div
       class="square"
@@ -116,7 +116,7 @@
         sendTile(tiles.ai);
       }}
     >
-      <img src="ai.svg" />
+      <img src="ai.svg" alt="ACM AI Team Logo" />
     </div>
     <div
       class="square"
@@ -126,7 +126,7 @@
         sendTile(tiles.dev);
       }}
     >
-      <img src="dev.svg" />
+      <img src="dev.svg" alt="ACM Dev Team Logo" />
     </div>
     <div
       class="square"
@@ -136,7 +136,7 @@
         sendTile(tiles.design);
       }}
     >
-      <img src="design.svg" />
+      <img src="design.svg" alt="ACM Design Team Logo" />
     </div>
     <!-- <button class="start" on:click={testTurnOffPointerEvent}>start</button> -->
   </span>

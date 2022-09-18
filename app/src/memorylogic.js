@@ -38,17 +38,19 @@ export function startLevel(depth, delay = 875) {
   state.incoming = [];
   state.cdepth = depth;
   let cnt = 0;
+  /* TODO(justinstitt): rename these to something that makes more sense */
+  let factor = 1.3;
+  let reduce = 0.8;
   setClickable(false);
-  /* TODO(justinstitt): give rhyme and reason to these magic numbers */
   for (let move of state.move_list) {
     setTimeout(() => {
-      hint(move, delay * 0.8);
-    }, delay * cnt * 1.3);
+      hint(move, delay * reduce);
+    }, delay * cnt * factor);
     ++cnt;
   }
   setTimeout(() => {
     setClickable(true);
-  }, delay * (cnt - 1) * 1.3 + 75);
+  }, delay * (cnt - 1) * factor + 75);
 }
 
 export function lose() {
@@ -80,7 +82,7 @@ export function sendMove(tile) {
     lose();
     return { result: "lose" };
   }
-  /* TODO(justinstitt): add dynamic score incrementation (difficulty-based) */
+
   state.score += 1253 * (1 + state.cdepth / 6);
   score.update((s) => (s = state.score));
   updateHighscore();
