@@ -98,47 +98,18 @@
   </div>
   <span class="diamond">
     <!-- TODO(justinstitt): rewrite this with an {#each} since it's rep. code -->
-    <div
-      class="square"
-      id="algo"
-      bind:this={tiles.algo}
-      on:click={() => {
-        sendTile(tiles.algo);
-      }}
-    >
-      <img src="algo.svg" alt="ACM Algo Team Logo" />
-    </div>
-    <div
-      class="square"
-      id="ai"
-      bind:this={tiles.ai}
-      on:click={() => {
-        sendTile(tiles.ai);
-      }}
-    >
-      <img src="ai.svg" alt="ACM AI Team Logo" />
-    </div>
-    <div
-      class="square"
-      id="dev"
-      bind:this={tiles.dev}
-      on:click={() => {
-        sendTile(tiles.dev);
-      }}
-    >
-      <img src="dev.svg" alt="ACM Dev Team Logo" />
-    </div>
-    <div
-      class="square"
-      id="design"
-      bind:this={tiles.design}
-      on:click={() => {
-        sendTile(tiles.design);
-      }}
-    >
-      <img src="design.svg" alt="ACM Design Team Logo" />
-    </div>
-    <!-- <button class="start" on:click={testTurnOffPointerEvent}>start</button> -->
+    {#each Object.keys(tiles) as tile}
+      <div
+        class="square"
+        id={tile}
+        bind:this={tiles[tile]}
+        on:click={() => {
+          sendTile(tiles[tile]);
+        }}
+      >
+        <img src={`${tile}.svg`} alt={`ACM ${tile} Team Logo`} />
+      </div>
+    {/each}
   </span>
   <div
     id="start"
